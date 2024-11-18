@@ -1068,6 +1068,9 @@ else
   
 fi
 
+echo "surge 配置‘
+echo "$(curl -s https://ipinfo.io/ | jq -r '"\(.org | split(" ") | .[1:] | join(" ") | split(" (")[0]) \(.country)"') = hysteria2, $(curl -s -4 http://www.cloudflare.com/cdn-cgi/trace | grep "ip" | awk -F "[=]" '{print $2}'),$(grep 'listen:' /root/hy3/config.yaml | sed 's/.*:\s*//'), password=$(grep 'password:' /root/hy3/config.yaml | sed 's/.*:\s*//'), ecn=true, skip-cert-verify=true, sni=$(grep 'cert:' /root/hy3/config.yaml | awk -F '/' '{print $NF}' | awk -F '.' '{print $1"."$2"."$3}')"
+
 echo -e "$(random_color '
 
 Hysteria2安装成功，请合理使用哦,你直直-——直直接给我坐下')"
